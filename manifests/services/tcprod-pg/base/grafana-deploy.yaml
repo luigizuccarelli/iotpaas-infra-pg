@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/name: tcprod-grafana
     app.kubernetes.io/part-of: tcprod-prometheus
     app.kubernetes.io/version: 7.3.7
-  name: tcprod-tcprod-grafana
+  name: tcprod-grafana
   namespace: tcprod-pg
 spec:
   progressDeadlineSeconds: 600
@@ -39,7 +39,7 @@ spec:
           value: http://tcprod-grafana:3000/
         - name: GF_LOG_FILTERS
           value: rendering:debug
-        image: quay.io/luigizuccarelli/tcprod-grafana:latest
+        image: quay.io/luigizuccarelli/grafana:v1.2.0
         imagePullPolicy: IfNotPresent
         name: tcprod-grafana
         ports:

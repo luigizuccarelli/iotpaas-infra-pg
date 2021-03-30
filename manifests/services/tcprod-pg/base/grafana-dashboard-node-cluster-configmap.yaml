@@ -1,4 +1,13 @@
 apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/component: tcprod-grafana
+    app.kubernetes.io/name: tcprod-grafana
+    app.kubernetes.io/part-of: tcprod-prometheus
+    app.kubernetes.io/version: 7.3.7
+  name: tcprod-grafana-dashboard-node-cluster-rsrc-use
+  namespace: tcprod-pg
 data:
   node-cluster-rsrc-use.json: |-
     {
@@ -942,12 +951,5 @@ data:
         "uid": "",
         "version": 0
     }
-kind: ConfigMap
-metadata:
-  labels:
-    app.kubernetes.io/component: grafana
-    app.kubernetes.io/name: grafana
-    app.kubernetes.io/part-of: tcprod-prometheus
-    app.kubernetes.io/version: 7.3.7
-  name: grafana-dashboard-node-cluster-rsrc-use
-  namespace: tcprod-pg
+
+

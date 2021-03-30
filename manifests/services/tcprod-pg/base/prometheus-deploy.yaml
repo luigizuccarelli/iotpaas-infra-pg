@@ -47,7 +47,7 @@ spec:
           volumeMounts:
             - name: prom-config
               subPath: prometheus.yml
-              mountPath: "/etc/promotheus/prometheus.yml"
+              mountPath: "/etc/prometheus/prometheus.yml"
       volumes:
         - name: prom-config
           configMap:

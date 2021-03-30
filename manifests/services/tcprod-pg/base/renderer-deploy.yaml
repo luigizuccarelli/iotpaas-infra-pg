@@ -1,5 +1,5 @@
-kind: Deployment
 apiVersion: apps/v1
+kind: Deployment
 metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
@@ -10,7 +10,6 @@ metadata:
     app.kubernetes.io/instance: tcprod-renderer
     name: tcprod-renderer
   name: tcprod-renderer
-
 spec:
   strategy:
     type: RollingUpdate
@@ -70,7 +69,7 @@ spec:
           imagePullPolicy: Always
           terminationMessagePolicy: File
           image: >-
-                  docker.io/grafana/grafana-image-tcprod-renderer:latest
+                  docker.io/grafana/grafana-image-renderer:latest
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
