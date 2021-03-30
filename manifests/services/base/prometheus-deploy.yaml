@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tcprod-prometheus
+  namespace: tcprod-pg
+  labels:
+    k8s-app: tcprod-prometheus
+    addonmanager.kubernetes.io/mode: Reconcile
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: tcprod-prometheus
+  template:
+    metadata:
+      labels:
+        k8s-app: tcprod-prometheus
+    spec:
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: tcprod-prometheus
+          image: docker.io/prom/prometheus:main 
+          resources:
+            # need more cpu upon initialization, therefore burstable class
+            limits:
+              cpu: 1000m
+            requests:
+              cpu: 100m
+          ports:
+            - containerPort: 9090
+              name: server
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /-/ready
+              port: server
+            initialDelaySeconds: 5
+            timeoutSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /-/ready
+              port: server
+            initialDelaySeconds: 5
+            timeoutSeconds: 10
+          volumeMounts:
+            - name: prom-config
+              subPath: prometheus.yml
+              mountPath: "/etc/promotheus/prometheus.yml"
+      volumes:
+        - name: prom-config
+          configMap:
+            name: tcprod-prometheus
+            defaultMode: 420        

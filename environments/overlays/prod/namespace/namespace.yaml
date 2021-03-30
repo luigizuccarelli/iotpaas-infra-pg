@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: tcprod-pg
+  labels:
+    cost-tenancy: Dedicated
+    dept: TraficControl
+    org: Ericsson
+    network-share: ericsson
+    product: tcprod-pg

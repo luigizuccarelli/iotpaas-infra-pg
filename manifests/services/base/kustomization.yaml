@@ -1,0 +1,12 @@
+namePrefix: 
+
+resources:
+  - prometheus-configmap.yaml
+  - prometheus-deploy.yaml
+  - grafana-dashboard-node-cluster-configmap.yaml
+  - grafana-service.yaml
+  - grafana-deploy.yaml
+  - renderer-service.yaml
+  - renderer-deploy.yaml
+
+
