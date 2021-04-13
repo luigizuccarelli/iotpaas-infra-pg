@@ -17,7 +17,16 @@ data:
                 "folder": "Default",
                 "name": "0",
                 "options": {
-                    "path": "/grafana-dashboard-definitions/0"
+                    "path": "/grafana-dashboard-definitions/0/whitebox"
+                },
+                "orgId": 1,
+                "type": "file"
+            },
+            {
+                "folder": "Default",
+                "name": "1",
+                "options": {
+                    "path": "/grafana-dashboard-definitions/0/log-alert"
                 },
                 "orgId": 1,
                 "type": "file"

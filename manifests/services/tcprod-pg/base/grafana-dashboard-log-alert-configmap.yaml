@@ -1,0 +1,1130 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/component: tcprod-grafana
+    app.kubernetes.io/name: tcprod-grafana
+    app.kubernetes.io/part-of: tcprod-prometheus
+    app.kubernetes.io/version: 7.3.7
+  name: tcprod-grafana-dashboard-log-alert
+  namespace: tcprod-pg
+data:
+  log-alert.json: |-
+    {
+      "annotations": {
+        "list": [
+          {
+            "builtIn": 1,
+            "datasource": "-- Grafana --",
+            "enable": true,
+            "hide": true,
+            "iconColor": "rgba(0, 211, 255, 1)",
+            "name": "Annotations & Alerts",
+            "type": "dashboard"
+          }
+        ]
+      },
+      "editable": true,
+      "gnetId": null,
+      "graphTooltip": 0,
+      "id": 25,
+      "links": [],
+      "panels": [
+        {
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 0
+          },
+          "id": 2,
+          "panels": [
+            {
+              "alert": {
+                "alertRuleTags": {},
+                "conditions": [
+                  {
+                    "evaluator": {
+                      "params": [
+                        5
+                      ],
+                      "type": "gt"
+                    },
+                    "operator": {
+                      "type": "and"
+                    },
+                    "query": {
+                      "params": [
+                        "A",
+                        "5m",
+                        "now"
+                      ]
+                    },
+                    "reducer": {
+                      "params": [],
+                      "type": "count"
+                    },
+                    "type": "query"
+                  }
+                ],
+                "executionErrorState": "alerting",
+                "for": "10s",
+                "frequency": "5m",
+                "handler": 1,
+                "message": "kubectl get events -A had errors and failures.\n\nPlease investigate",
+                "name": "events alert (kubectl)",
+                "noDataState": "ok",
+                "notifications": [
+                  {
+                    "uid": "ufvQQ18Mk"
+                  }
+                ]
+              },
+              "aliasColors": {
+                "Count": "semi-dark-red"
+              },
+              "bars": true,
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Elasticsearch",
+              "fieldConfig": {
+                "defaults": {
+                  "color": {},
+                  "custom": {},
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": []
+                  }
+                },
+                "overrides": []
+              },
+              "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 9,
+                "w": 24,
+                "x": 0,
+                "y": 1
+              },
+              "hiddenSeries": false,
+              "id": 4,
+              "legend": {
+                "alignAsTable": true,
+                "avg": false,
+                "current": true,
+                "hideEmpty": false,
+                "max": true,
+                "min": false,
+                "rightSide": true,
+                "show": true,
+                "total": false,
+                "values": true
+              },
+              "lines": false,
+              "linewidth": 1,
+              "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
+              "percentage": false,
+              "pluginVersion": "7.4.3",
+              "pointradius": 2,
+              "points": false,
+              "renderer": "flot",
+              "seriesOverrides": [],
+              "spaceLength": 10,
+              "stack": false,
+              "steppedLine": false,
+              "targets": [
+                {
+                  "alias": "",
+                  "bucketAggs": [
+                    {
+                      "field": "@timestamp",
+                      "id": "1",
+                      "settings": {
+                        "interval": "10s"
+                      },
+                      "type": "date_histogram"
+                    }
+                  ],
+                  "metrics": [
+                    {
+                      "hide": false,
+                      "id": "1",
+                      "type": "count"
+                    }
+                  ],
+                  "query": "kubernetes.namespace_name:\"custom-alert\" AND (message:*error* OR message:*fail*) ",
+                  "queryType": "randomWalk",
+                  "refId": "A",
+                  "timeField": "@timestamp"
+                }
+              ],
+              "thresholds": [
+                {
+                  "colorMode": "critical",
+                  "fill": true,
+                  "line": true,
+                  "op": "gt",
+                  "value": 5,
+                  "visible": true
+                }
+              ],
+              "timeFrom": null,
+              "timeRegions": [],
+              "timeShift": null,
+              "title": "alerts",
+              "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+              },
+              "type": "graph",
+              "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+              },
+              "yaxes": [
+                {
+                  "format": "short",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                },
+                {
+                  "format": "short",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                }
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
+            }
+          ],
+          "title": "kubectl alert",
+          "type": "row"
+        },
+        {
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 1
+          },
+          "id": 6,
+          "panels": [
+            {
+              "datasource": "Elasticsearch",
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "custom": {
+                    "align": null,
+                    "filterable": false
+                  },
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "timestamp"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 150
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "namespace"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 130
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "container"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 130
+                      }
+                    ]
+                  }
+                ]
+              },
+              "gridPos": {
+                "h": 11,
+                "w": 24,
+                "x": 0,
+                "y": 11
+              },
+              "id": 21,
+              "options": {
+                "showHeader": true
+              },
+              "pluginVersion": "7.4.3",
+              "targets": [
+                {
+                  "alias": "",
+                  "bucketAggs": [],
+                  "hide": false,
+                  "metrics": [
+                    {
+                      "id": "1",
+                      "settings": {
+                        "size": "500"
+                      },
+                      "type": "raw_data"
+                    }
+                  ],
+                  "query": "kubernetes.namespace_name:\"custom-alert\" AND (message:*error* OR message:*fail*) ",
+                  "refId": "A",
+                  "timeField": "@timestamp"
+                }
+              ],
+              "title": "logs",
+              "transformations": [
+                {
+                  "id": "organize",
+                  "options": {
+                    "excludeByName": {
+                      "_id": true,
+                      "_index": true,
+                      "_type": true,
+                      "docker.container_id": true,
+                      "kubernetes.container_image": true,
+                      "kubernetes.container_image_id": true,
+                      "kubernetes.host": true,
+                      "kubernetes.labels.app_kubernetes_io": true,
+                      "kubernetes.labels.controller-uid": true,
+                      "kubernetes.labels.job-name": true,
+                      "kubernetes.labels.name": true,
+                      "kubernetes.labels.pod-template-hash": true,
+                      "kubernetes.master_url": true,
+                      "kubernetes.namespace_id": true,
+                      "kubernetes.pod_id": true,
+                      "kubernetes.pod_name": true,
+                      "sort": true,
+                      "stream": true,
+                      "tag": true
+                    },
+                    "indexByName": {
+                      "@timestamp": 0,
+                      "_id": 5,
+                      "_index": 6,
+                      "_type": 7,
+                      "docker.container_id": 8,
+                      "kubernetes.container_image": 9,
+                      "kubernetes.container_image_id": 10,
+                      "kubernetes.container_name": 2,
+                      "kubernetes.host": 11,
+                      "kubernetes.labels.controller-uid": 12,
+                      "kubernetes.labels.job-name": 13,
+                      "kubernetes.master_url": 14,
+                      "kubernetes.namespace_id": 15,
+                      "kubernetes.namespace_name": 1,
+                      "kubernetes.pod_id": 16,
+                      "kubernetes.pod_name": 17,
+                      "message": 3,
+                      "sort": 4,
+                      "stream": 18,
+                      "tag": 19
+                    },
+                    "renameByName": {
+                      "@timestamp": "timestamp",
+                      "kubernetes.container_name": "container",
+                      "kubernetes.namespace_name": "namespace"
+                    }
+                  }
+                }
+              ],
+              "type": "table"
+            }
+          ],
+          "title": "kubectl events error logs",
+          "type": "row"
+        },
+        {
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 2
+          },
+          "id": 24,
+          "panels": [
+            {
+              "datasource": "Elasticsearch",
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "custom": {
+                    "align": null,
+                    "filterable": false
+                  },
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "timestamp"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 150
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "namespace"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 130
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "container"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 130
+                      }
+                    ]
+                  }
+                ]
+              },
+              "gridPos": {
+                "h": 11,
+                "w": 24,
+                "x": 0,
+                "y": 23
+              },
+              "id": 22,
+              "options": {
+                "showHeader": true,
+                "sortBy": [
+                  {
+                    "desc": false,
+                    "displayName": "sort"
+                  }
+                ]
+              },
+              "pluginVersion": "7.4.3",
+              "targets": [
+                {
+                  "alias": "",
+                  "bucketAggs": [],
+                  "hide": false,
+                  "metrics": [
+                    {
+                      "id": "1",
+                      "settings": {
+                        "size": "500"
+                      },
+                      "type": "raw_data"
+                    }
+                  ],
+                  "query": "kubernetes.namespace_name:\"custom-alert\" ",
+                  "refId": "A",
+                  "timeField": "@timestamp"
+                }
+              ],
+              "title": "logs",
+              "transformations": [
+                {
+                  "id": "organize",
+                  "options": {
+                    "excludeByName": {
+                      "_id": true,
+                      "_index": true,
+                      "_type": true,
+                      "docker.container_id": true,
+                      "kubernetes.container_image": true,
+                      "kubernetes.container_image_id": true,
+                      "kubernetes.host": true,
+                      "kubernetes.labels.app_kubernetes_io": true,
+                      "kubernetes.labels.controller-uid": true,
+                      "kubernetes.labels.job-name": true,
+                      "kubernetes.labels.name": true,
+                      "kubernetes.labels.pod-template-hash": true,
+                      "kubernetes.master_url": true,
+                      "kubernetes.namespace_id": true,
+                      "kubernetes.pod_id": true,
+                      "kubernetes.pod_name": true,
+                      "sort": true,
+                      "stream": true,
+                      "tag": true
+                    },
+                    "indexByName": {
+                      "@timestamp": 0,
+                      "_id": 4,
+                      "_index": 5,
+                      "_type": 6,
+                      "docker.container_id": 7,
+                      "kubernetes.container_image": 8,
+                      "kubernetes.container_image_id": 9,
+                      "kubernetes.container_name": 2,
+                      "kubernetes.host": 10,
+                      "kubernetes.labels.controller-uid": 11,
+                      "kubernetes.labels.job-name": 12,
+                      "kubernetes.master_url": 13,
+                      "kubernetes.namespace_id": 14,
+                      "kubernetes.namespace_name": 1,
+                      "kubernetes.pod_id": 15,
+                      "kubernetes.pod_name": 16,
+                      "message": 3,
+                      "sort": 17,
+                      "stream": 18,
+                      "tag": 19
+                    },
+                    "renameByName": {
+                      "@timestamp": "timestamp",
+                      "kubernetes.container_name": "container",
+                      "kubernetes.namespace_name": "namespace"
+                    }
+                  }
+                }
+              ],
+              "type": "table"
+            }
+          ],
+          "title": "kubectl events all logs",
+          "type": "row"
+        },
+        {
+          "collapsed": false,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 3
+          },
+          "id": 13,
+          "panels": [],
+          "title": "all microservice alerts",
+          "type": "row"
+        },
+        {
+          "alert": {
+            "alertRuleTags": {},
+            "conditions": [
+              {
+                "evaluator": {
+                  "params": [
+                    1
+                  ],
+                  "type": "gt"
+                },
+                "operator": {
+                  "type": "and"
+                },
+                "query": {
+                  "params": [
+                    "A",
+                    "1m",
+                    "now"
+                  ]
+                },
+                "reducer": {
+                  "params": [],
+                  "type": "max"
+                },
+                "type": "query"
+              }
+            ],
+            "executionErrorState": "alerting",
+            "for": "0m",
+            "frequency": "1m",
+            "handler": 1,
+            "message": "Error detected \n\nnamespace : tcprod-apps\n\nPlease investigate",
+            "name": "log error all alerts",
+            "noDataState": "ok",
+            "notifications": [
+              {
+                "uid": "ufvQQ18Mk"
+              }
+            ]
+          },
+          "aliasColors": {
+            "Count": "semi-dark-red"
+          },
+          "bars": true,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Elasticsearch",
+          "fieldConfig": {
+            "defaults": {
+              "color": {},
+              "custom": {},
+              "thresholds": {
+                "mode": "absolute",
+                "steps": []
+              }
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 9,
+            "w": 24,
+            "x": 0,
+            "y": 4
+          },
+          "hiddenSeries": false,
+          "id": 14,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "hideEmpty": false,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": false,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.4.3",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "",
+              "bucketAggs": [
+                {
+                  "field": "@timestamp",
+                  "id": "1",
+                  "settings": {
+                    "interval": "10s"
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "metrics": [
+                {
+                  "id": "1",
+                  "type": "count"
+                }
+              ],
+              "query": "kubernetes.namespace_name:\"tcprod-apps\"  AND (message:*error* OR message:*fail*)",
+              "queryType": "randomWalk",
+              "refId": "A",
+              "timeField": "@timestamp"
+            }
+          ],
+          "thresholds": [
+            {
+              "colorMode": "critical",
+              "fill": true,
+              "line": true,
+              "op": "gt",
+              "value": 1,
+              "visible": true
+            }
+          ],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "all microservice alerts",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 13
+          },
+          "id": 11,
+          "panels": [
+            {
+              "datasource": "Elasticsearch",
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "custom": {
+                    "align": null,
+                    "filterable": false
+                  },
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "timestamp"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 150
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "namespace"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 130
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "container"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 220
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "pod"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 320
+                      }
+                    ]
+                  }
+                ]
+              },
+              "gridPos": {
+                "h": 11,
+                "w": 24,
+                "x": 0,
+                "y": 14
+              },
+              "id": 8,
+              "options": {
+                "showHeader": true
+              },
+              "pluginVersion": "7.4.3",
+              "targets": [
+                {
+                  "alias": "",
+                  "bucketAggs": [],
+                  "hide": false,
+                  "metrics": [
+                    {
+                      "id": "1",
+                      "settings": {
+                        "size": "500"
+                      },
+                      "type": "raw_data"
+                    }
+                  ],
+                  "query": "kubernetes.namespace_name:\"tcprod-apps\" AND kubernetes.container_name:\"golang-simple-echoservice\" AND (message:*error* OR message:*fail*)",
+                  "refId": "A",
+                  "timeField": "@timestamp"
+                }
+              ],
+              "title": "logs",
+              "transformations": [
+                {
+                  "id": "organize",
+                  "options": {
+                    "excludeByName": {
+                      "_id": true,
+                      "_index": true,
+                      "_type": true,
+                      "docker.container_id": true,
+                      "kubernetes.container_image": true,
+                      "kubernetes.container_image_id": true,
+                      "kubernetes.host": true,
+                      "kubernetes.labels.app_kubernetes_io": true,
+                      "kubernetes.labels.controller-uid": true,
+                      "kubernetes.labels.job-name": true,
+                      "kubernetes.labels.name": true,
+                      "kubernetes.labels.pod-template-hash": true,
+                      "kubernetes.master_url": true,
+                      "kubernetes.namespace_id": true,
+                      "kubernetes.pod_id": true,
+                      "kubernetes.pod_name": false,
+                      "sort": true,
+                      "stream": true,
+                      "tag": true
+                    },
+                    "indexByName": {
+                      "@timestamp": 0,
+                      "_id": 5,
+                      "_index": 6,
+                      "_type": 7,
+                      "docker.container_id": 8,
+                      "kubernetes.container_image": 9,
+                      "kubernetes.container_image_id": 10,
+                      "kubernetes.container_name": 2,
+                      "kubernetes.host": 11,
+                      "kubernetes.labels.app_kubernetes_io": 18,
+                      "kubernetes.labels.name": 19,
+                      "kubernetes.labels.pod-template-hash": 20,
+                      "kubernetes.master_url": 12,
+                      "kubernetes.namespace_id": 13,
+                      "kubernetes.namespace_name": 1,
+                      "kubernetes.pod_id": 14,
+                      "kubernetes.pod_name": 3,
+                      "message": 4,
+                      "sort": 15,
+                      "stream": 16,
+                      "tag": 17
+                    },
+                    "renameByName": {
+                      "@timestamp": "timestamp",
+                      "kubernetes.container_name": "container",
+                      "kubernetes.namespace_name": "namespace",
+                      "kubernetes.pod_name": "pod"
+                    }
+                  }
+                }
+              ],
+              "type": "table"
+            }
+          ],
+          "title": "golang-simple-echoservice error logs",
+          "type": "row"
+        },
+        {
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 14
+          },
+          "id": 20,
+          "panels": [
+            {
+              "datasource": "Elasticsearch",
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "custom": {
+                    "align": null,
+                    "filterable": false
+                  },
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "timestamp"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 150
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "namespace"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 130
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "container"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 220
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "pod"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 320
+                      }
+                    ]
+                  }
+                ]
+              },
+              "gridPos": {
+                "h": 11,
+                "w": 24,
+                "x": 0,
+                "y": 6
+              },
+              "id": 18,
+              "options": {
+                "showHeader": true
+              },
+              "pluginVersion": "7.4.3",
+              "targets": [
+                {
+                  "alias": "",
+                  "bucketAggs": [],
+                  "hide": false,
+                  "metrics": [
+                    {
+                      "id": "1",
+                      "settings": {
+                        "size": "500"
+                      },
+                      "type": "raw_data"
+                    }
+                  ],
+                  "query": "kubernetes.namespace_name:\"tcprod-apps\" AND kubernetes.container_name:\"golang-second-echoservice\" AND (message:*error* OR message:*fail*)",
+                  "refId": "A",
+                  "timeField": "@timestamp"
+                }
+              ],
+              "title": "logs",
+              "transformations": [
+                {
+                  "id": "organize",
+                  "options": {
+                    "excludeByName": {
+                      "_id": true,
+                      "_index": true,
+                      "_type": true,
+                      "docker.container_id": true,
+                      "kubernetes.container_image": true,
+                      "kubernetes.container_image_id": true,
+                      "kubernetes.host": true,
+                      "kubernetes.labels.app_kubernetes_io": true,
+                      "kubernetes.labels.controller-uid": true,
+                      "kubernetes.labels.job-name": true,
+                      "kubernetes.labels.name": true,
+                      "kubernetes.labels.pod-template-hash": true,
+                      "kubernetes.master_url": true,
+                      "kubernetes.namespace_id": true,
+                      "kubernetes.pod_id": true,
+                      "kubernetes.pod_name": false,
+                      "sort": true,
+                      "stream": true,
+                      "tag": true
+                    },
+                    "indexByName": {
+                      "@timestamp": 0,
+                      "_id": 5,
+                      "_index": 6,
+                      "_type": 7,
+                      "docker.container_id": 8,
+                      "kubernetes.container_image": 9,
+                      "kubernetes.container_image_id": 10,
+                      "kubernetes.container_name": 2,
+                      "kubernetes.host": 11,
+                      "kubernetes.labels.app_kubernetes_io": 18,
+                      "kubernetes.labels.name": 19,
+                      "kubernetes.labels.pod-template-hash": 20,
+                      "kubernetes.master_url": 12,
+                      "kubernetes.namespace_id": 13,
+                      "kubernetes.namespace_name": 1,
+                      "kubernetes.pod_id": 14,
+                      "kubernetes.pod_name": 3,
+                      "message": 4,
+                      "sort": 15,
+                      "stream": 16,
+                      "tag": 17
+                    },
+                    "renameByName": {
+                      "@timestamp": "timestamp",
+                      "kubernetes.container_name": "container",
+                      "kubernetes.namespace_name": "namespace",
+                      "kubernetes.pod_name": "pod"
+                    }
+                  }
+                }
+              ],
+              "type": "table"
+            }
+          ],
+          "title": "golang-second-echoservice error logs",
+          "type": "row"
+        }
+      ],
+      "refresh": "5m",
+      "schemaVersion": 27,
+      "style": "dark",
+      "tags": [],
+      "templating": {
+        "list": []
+      },
+      "time": {
+        "from": "now-5m",
+        "to": "now"
+      },
+      "timepicker": {},
+      "timezone": "",
+      "title": "TCPROD [Log Monitoring & Alerts]",
+      "uid": "V-Jrv1UGk",
+      "version": 35
+    }
+
+

@@ -2,10 +2,11 @@ namePrefix:
 
 resources:
   - grafana-token-secret.yaml
-  - grafana-datasource-secret.yaml
-  - serviceaccount.yaml
-  - grafana-dashboard-node-cluster-configmap.yaml
+  - grafana-datasources-configmap.yaml
   - grafana-dashboards-configmap.yaml
+  - serviceaccount.yaml
+  - grafana-dashboard-whitebox-configmap.yaml
+  - grafana-dashboard-log-alert-configmap.yaml
   - promethues-configmap.yaml
   - grafana-service.yaml
   - grafana-deploy.yaml
