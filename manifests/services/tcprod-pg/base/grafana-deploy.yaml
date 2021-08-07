@@ -73,8 +73,6 @@ spec:
           name: tcprod-grafana-dashboards
         - mountPath: /grafana-dashboard-definitions/0/whitebox
           name: tcprod-grafana-dashboard-whitebox
-        - mountPath: /grafana-dashboard-definitions/0/log-alert
-          name: tcprod-grafana-dashboard-log-alert
       dnsPolicy: ClusterFirst
       nodeSelector:
         beta.kubernetes.io/os: linux

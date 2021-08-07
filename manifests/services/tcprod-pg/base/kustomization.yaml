@@ -6,7 +6,8 @@ resources:
   - grafana-dashboards-configmap.yaml
   - serviceaccount.yaml
   - grafana-dashboard-whitebox-configmap.yaml
-  - promethues-configmap.yaml
+  - prometheus-service.yaml
+  - prometheus-configmap.yaml
   - grafana-service.yaml
   - grafana-deploy.yaml
   - prometheus-deploy.yaml
