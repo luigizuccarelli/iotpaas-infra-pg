@@ -6,11 +6,11 @@ resources:
   - grafana-dashboards-configmap.yaml
   - serviceaccount.yaml
   - grafana-dashboard-whitebox-configmap.yaml
-  - grafana-dashboard-log-alert-configmap.yaml
   - promethues-configmap.yaml
   - grafana-service.yaml
   - grafana-deploy.yaml
   - prometheus-deploy.yaml
-  - renderer-service.yaml
-  - renderer-deploy.yaml
+    # not using alerts
+    #- renderer-service.yaml
+    #- renderer-deploy.yaml
 

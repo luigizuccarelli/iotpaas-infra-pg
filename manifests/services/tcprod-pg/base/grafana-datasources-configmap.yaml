@@ -21,23 +21,6 @@ data:
               "type": "prometheus",
               "url": "http://tcprod-prometheus.tcprod-pg.svc.cluster.local:9090",
               "version": 1
-          },
-          {
-              "access": "proxy",
-              "editable": true,
-              "name": "Elasticsearch",
-              "orgId": 1,
-              "type": "elasticsearch",
-              "url": "http://tcprod-elastic.tcprod-efk.svc.cluster.local:9200",
-              "version": 1,
-              "database": "[logstash-*]",
-              "jsonData": {
-                "interval": "Daily",
-                "timefield": "@timestamp",
-                "esVersion" : 70,
-                "logMessageField": "message",
-                "logLevelField": "fields.level"
-            }
           }
       ]
     }

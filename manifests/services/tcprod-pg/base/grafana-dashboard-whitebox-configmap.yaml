@@ -91,7 +91,7 @@ data:
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "go_memstats_heap_inuse_bytes{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\"}",
+                  "expr": "go_memstats_heap_inuse_bytes{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\"}",
                   "hide": false,
                   "instant": false,
                   "interval": "",
@@ -99,7 +99,7 @@ data:
                   "refId": "A"
                 },
                 {
-                  "expr": "go_memstats_heap_alloc_bytes{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\"}",
+                  "expr": "go_memstats_heap_alloc_bytes{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\"}",
                   "hide": false,
                   "instant": false,
                   "interval": "",
@@ -107,7 +107,7 @@ data:
                   "refId": "B"
                 },
                 {
-                  "expr": "go_memstats_heap_idle_bytes{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\"}",
+                  "expr": "go_memstats_heap_idle_bytes{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\"}",
                   "hide": false,
                   "instant": false,
                   "interval": "",
@@ -115,7 +115,7 @@ data:
                   "refId": "C"
                 },
                 {
-                  "expr": "go_memstats_heap_sys_bytes{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\"}",
+                  "expr": "go_memstats_heap_sys_bytes{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\"}",
                   "hide": false,
                   "instant": false,
                   "interval": "",
@@ -123,7 +123,7 @@ data:
                   "refId": "D"
                 },
                 {
-                  "expr": "go_memstats_heap_objects{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\"}",
+                  "expr": "go_memstats_heap_objects{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\"}",
                   "interval": "",
                   "legendFormat": "objects",
                   "refId": "E"
@@ -220,7 +220,7 @@ data:
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "go_memstats_stack_inuse_bytes{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\"}",
+                  "expr": "go_memstats_stack_inuse_bytes{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\"}",
                   "hide": false,
                   "instant": false,
                   "interval": "",
@@ -228,7 +228,7 @@ data:
                   "refId": "A"
                 },
                 {
-                  "expr": "go_memstats_stack_sys_bytes{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\"}",
+                  "expr": "go_memstats_stack_sys_bytes{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\"}",
                   "hide": false,
                   "instant": false,
                   "interval": "",
@@ -236,14 +236,14 @@ data:
                   "refId": "B"
                 },
                 {
-                  "expr": "go_memstats_alloc_bytes{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\"}",
+                  "expr": "go_memstats_alloc_bytes{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\"}",
                   "hide": false,
                   "interval": "",
                   "legendFormat": "alloc",
                   "refId": "C"
                 },
                 {
-                  "expr": "rate(go_memstats_alloc_bytes_total{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\"}[1m])",
+                  "expr": "rate(go_memstats_alloc_bytes_total{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\"}[1m])",
                   "hide": false,
                   "instant": false,
                   "interval": "",
@@ -342,7 +342,7 @@ data:
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "go_memstats_gc_cpu_fraction{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\"}",
+                  "expr": "go_memstats_gc_cpu_fraction{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\"}",
                   "hide": false,
                   "instant": false,
                   "interval": "",
@@ -350,7 +350,7 @@ data:
                   "refId": "A"
                 },
                 {
-                  "expr": "rate(process_cpu_seconds_total{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\"}[1m])",
+                  "expr": "rate(process_cpu_seconds_total{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\"}[1m])",
                   "hide": false,
                   "instant": false,
                   "interval": "",
@@ -451,7 +451,7 @@ data:
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "avg(rate(http_duration_seconds_sum{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\",path=\"/api/v1/echo\"}[1m]))",
+                  "expr": "avg(rate(http_duration_seconds_sum{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\",path=\"/api/v1/streamdata\"}[1m]))",
                   "hide": false,
                   "instant": false,
                   "interval": "",
@@ -547,7 +547,7 @@ data:
               "pluginVersion": "7.3.6",
               "targets": [
                 {
-                  "expr": "http_duration_seconds_count{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\",path=\"/api/v1/echo\"}",
+                  "expr": "http_duration_seconds_count{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\",path=\"/api/v1/streamdata\"}",
                   "instant": false,
                   "interval": "",
                   "legendFormat": "",
@@ -607,7 +607,7 @@ data:
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "rate(http_duration_seconds_sum{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\",path=\"/api/v1/sys/info/isalive\"}[1m])",
+                  "expr": "rate(http_duration_seconds_sum{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\",path=\"/api/v1/sys/info/isalive\"}[1m])",
                   "hide": false,
                   "instant": false,
                   "interval": "",
@@ -709,7 +709,7 @@ data:
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "http_duration_seconds_bucket{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\",path=\"/api/v1/echo\", le=\"0.005\"}",
+                  "expr": "http_duration_seconds_bucket{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\",path=\"/api/v1/streamdata\", le=\"0.005\"}",
                   "format": "time_series",
                   "hide": false,
                   "instant": false,
@@ -718,19 +718,19 @@ data:
                   "refId": "C"
                 },
                 {
-                  "expr": "http_duration_seconds_bucket{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\",path=\"/api/v1/echo\", le=\"0.025\"}",
+                  "expr": "http_duration_seconds_bucket{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\",path=\"/api/v1/streamdata\", le=\"0.025\"}",
                   "interval": "",
                   "legendFormat": "0.025",
                   "refId": "A"
                 },
                 {
-                  "expr": "http_duration_seconds_bucket{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\",path=\"/api/v1/echo\", le=\"0.1\"}",
+                  "expr": "http_duration_seconds_bucket{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\",path=\"/api/v1/streamdata\", le=\"0.1\"}",
                   "interval": "",
                   "legendFormat": "0.1",
                   "refId": "B"
                 },
                 {
-                  "expr": "http_duration_seconds_bucket{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\",path=\"/api/v1/echo\", le=\"1\"}",
+                  "expr": "http_duration_seconds_bucket{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\",path=\"/api/v1/streamdata\", le=\"1\"}",
                   "interval": "",
                   "legendFormat": "1",
                   "refId": "D"
@@ -778,7 +778,7 @@ data:
               }
             }
           ],
-          "title": "golang-simple-echoservice",
+          "title": "golang-simple-streamdataservice",
           "type": "row"
         },
         {
@@ -792,7 +792,7 @@ data:
           },
           "id": 10,
           "panels": [],
-          "title": "golang-second-echoservice",
+          "title": "golang-second-streamdataservice",
           "type": "row"
         },
         {
@@ -845,7 +845,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "go_memstats_heap_inuse_bytes{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\"}",
+              "expr": "go_memstats_heap_inuse_bytes{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\"}",
               "hide": false,
               "instant": false,
               "interval": "",
@@ -853,7 +853,7 @@ data:
               "refId": "A"
             },
             {
-              "expr": "go_memstats_heap_alloc_bytes{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\"}",
+              "expr": "go_memstats_heap_alloc_bytes{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\"}",
               "hide": false,
               "instant": false,
               "interval": "",
@@ -861,7 +861,7 @@ data:
               "refId": "B"
             },
             {
-              "expr": "go_memstats_heap_idle_bytes{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\"}",
+              "expr": "go_memstats_heap_idle_bytes{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\"}",
               "hide": false,
               "instant": false,
               "interval": "",
@@ -869,7 +869,7 @@ data:
               "refId": "C"
             },
             {
-              "expr": "go_memstats_heap_sys_bytes{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\"}",
+              "expr": "go_memstats_heap_sys_bytes{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\"}",
               "hide": false,
               "instant": false,
               "interval": "",
@@ -877,7 +877,7 @@ data:
               "refId": "D"
             },
             {
-              "expr": "go_memstats_heap_objects{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\"}",
+              "expr": "go_memstats_heap_objects{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\"}",
               "interval": "",
               "legendFormat": "objects",
               "refId": "E"
@@ -974,7 +974,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "go_memstats_stack_inuse_bytes{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\"}",
+              "expr": "go_memstats_stack_inuse_bytes{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\"}",
               "hide": false,
               "instant": false,
               "interval": "",
@@ -982,7 +982,7 @@ data:
               "refId": "A"
             },
             {
-              "expr": "go_memstats_stack_sys_bytes{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\"}",
+              "expr": "go_memstats_stack_sys_bytes{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\"}",
               "hide": false,
               "instant": false,
               "interval": "",
@@ -990,14 +990,14 @@ data:
               "refId": "B"
             },
             {
-              "expr": "go_memstats_alloc_bytes{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\"}",
+              "expr": "go_memstats_alloc_bytes{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\"}",
               "hide": false,
               "interval": "",
               "legendFormat": "alloc",
               "refId": "C"
             },
             {
-              "expr": "rate(go_memstats_alloc_bytes_total{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\"}[1m])",
+              "expr": "rate(go_memstats_alloc_bytes_total{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\"}[1m])",
               "hide": false,
               "instant": false,
               "interval": "",
@@ -1096,7 +1096,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "go_memstats_gc_cpu_fraction{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\"}",
+              "expr": "go_memstats_gc_cpu_fraction{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\"}",
               "hide": false,
               "instant": false,
               "interval": "",
@@ -1104,7 +1104,7 @@ data:
               "refId": "A"
             },
             {
-              "expr": "rate(process_cpu_seconds_total{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\"}[1m])",
+              "expr": "rate(process_cpu_seconds_total{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\"}[1m])",
               "hide": false,
               "instant": false,
               "interval": "",
@@ -1205,7 +1205,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "avg(rate(http_duration_seconds_sum{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\",path=\"/api/v1/echo\"}[1m]))",
+              "expr": "avg(rate(http_duration_seconds_sum{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\",path=\"/api/v1/streamdata\"}[1m]))",
               "hide": false,
               "instant": false,
               "interval": "",
@@ -1301,7 +1301,7 @@ data:
           "pluginVersion": "7.3.6",
           "targets": [
             {
-              "expr": "http_duration_seconds_count{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\",path=\"/api/v1/echo\"}",
+              "expr": "http_duration_seconds_count{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\",path=\"/api/v1/streamdata\"}",
               "instant": false,
               "interval": "",
               "legendFormat": "",
@@ -1361,7 +1361,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(http_duration_seconds_sum{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\",path=\"/api/v1/sys/info/isalive\"}[1m])",
+              "expr": "rate(http_duration_seconds_sum{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\",path=\"/api/v1/sys/info/isalive\"}[1m])",
               "hide": false,
               "instant": false,
               "interval": "",
@@ -1463,7 +1463,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "http_duration_seconds_bucket{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\",path=\"/api/v1/echo\", le=\"0.005\"}",
+              "expr": "http_duration_seconds_bucket{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\",path=\"/api/v1/streamdata\", le=\"0.005\"}",
               "format": "time_series",
               "hide": false,
               "instant": false,
@@ -1472,19 +1472,19 @@ data:
               "refId": "C"
             },
             {
-              "expr": "http_duration_seconds_bucket{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\",path=\"/api/v1/echo\", le=\"0.025\"}",
+              "expr": "http_duration_seconds_bucket{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\",path=\"/api/v1/streamdata\", le=\"0.025\"}",
               "interval": "",
               "legendFormat": "0.025",
               "refId": "A"
             },
             {
-              "expr": "http_duration_seconds_bucket{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\",path=\"/api/v1/echo\", le=\"0.1\"}",
+              "expr": "http_duration_seconds_bucket{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\",path=\"/api/v1/streamdata\", le=\"0.1\"}",
               "interval": "",
               "legendFormat": "0.1",
               "refId": "B"
             },
             {
-              "expr": "http_duration_seconds_bucket{instance=\"golang-simple-echoservice.tcprod-apps.svc.cluster.local:9000\",path=\"/api/v1/echo\", le=\"1\"}",
+              "expr": "http_duration_seconds_bucket{instance=\"iotpaas-message-producer.iotpaas.svc.cluster.local:9000\",path=\"/api/v1/streamdata\", le=\"1\"}",
               "interval": "",
               "legendFormat": "1",
               "refId": "D"

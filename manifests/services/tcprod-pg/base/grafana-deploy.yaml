@@ -102,7 +102,3 @@ spec:
           defaultMode: 420
           name: tcprod-grafana-dashboard-whitebox
         name: tcprod-grafana-dashboard-whitebox
-      - configMap:
-          defaultMode: 420
-          name: tcprod-grafana-dashboard-log-alert
-        name: tcprod-grafana-dashboard-log-alert
